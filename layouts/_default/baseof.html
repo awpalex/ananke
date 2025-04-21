@@ -36,22 +36,21 @@
       <link href="{{ .RelPermalink }}" rel="feed" type="application/rss+xml" title="{{ $.Site.Title }}" />
       {{ end }}
     {{ end }}
-
     {{ if .Params.canonicalUrl }}
-      <link rel="canonical" href="{{ .Params.canonicalUrl }}">
+    <link rel="canonical" href="{{ .Params.canonicalUrl }}">
     {{ else }}
-      <link rel="canonical" href="{{ .Permalink }}">
+    <link rel="canonical" href="{{ .Permalink }}">
     {{ end }}
-
+    
     {{/* NOTE: These Hugo Internal Templates can be found starting at https://github.com/gohugoio/hugo/tree/master/tpl/tplimpl/embedded/templates */}}
     {{- template "_internal/opengraph.html" . -}}
     {{- template "_internal/schema.html" . -}}
     {{- template "_internal/twitter_cards.html" . -}}
-
+    
     {{ if hugo.IsProduction }}
-      {{ template "_internal/google_analytics.html" . }}
+    {{ template "_internal/google_analytics.html" . }}
     {{ end }}
-	{{ block "head" . }}{{ partials.Include "head-additions.html" . }}{{ end }}
+    {{ block "head" . }}{{ partials.Include "head-additions.html" . }}{{ end }}
   </head>
 
   {{- $environment := hugo.Environment | compare.Default "production" -}}
